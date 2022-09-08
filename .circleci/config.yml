@@ -16,10 +16,13 @@ jobs:
             mv /tmp/docker/* /usr/bin
       - run:
           name: Build docker image
-          command: docker build -t phvan2312/multi-k8s:v1 .
+          command: |
+            export SHA=$(git rev-parse HEAD)
+            docker build -t phvan2312/multi-client:$SHA -f ./client/Dockerfile.dev ./client
       - run:
           name: Push to DockerHub
           command: |
+            export SHA=$(git rev-parse HEAD)
             docker login -u phvan2312 -p $DOCKERHUB_PASSWORD
-            docker push phvan2312/multi-k8s:v1
+            docker push phvan2312/multi-client:$SHA
 
