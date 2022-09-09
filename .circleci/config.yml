@@ -21,6 +21,7 @@ jobs:
           name: Run unit test
           command: |
             echo 'test successfully!'
+            docker image ls
   build_and_deploy:
     executor: docker/docker
     steps:
@@ -38,11 +39,11 @@ jobs:
           docker-context: client
           image: multi-client
           tag: $SHA
+          registry: phvan2312
       - docker/push:
           image: multi-client
           tag: $SHA
           registry: phvan2312
-
 
 workflows:
   commit:
