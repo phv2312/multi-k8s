@@ -31,7 +31,7 @@ jobs:
           command: |
             echo "export SHA=$(git rev-parse --short HEAD)" >> $BASH_ENV
       - docker/check:
-          docker-username: DOCKER_USER
+          docker-username: DOCKERHUB_USER
           docker-password: DOCKERHUB_PASSWORD
       - docker/build:
           dockerfile: client/Dockerfile.dev
