@@ -41,6 +41,8 @@ jobs:
       - docker/push:
           image: multi-client
           tag: $SHA
+          registry: phvan2312
+
 
 workflows:
   commit:
